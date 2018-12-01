@@ -4,7 +4,8 @@
   "description": "create a list of things you're always forget to do",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "author": "Irina Stoetskaya, Anna Bereza, Denis Timokhin",
   "license": "ISC",
