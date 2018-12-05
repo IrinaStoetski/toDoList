@@ -1,0 +1,15 @@
+// чтобы подключить, нужно include полный путь templates/card/create-card
+extends layout
+block content
+    form(method='POST')
+        div.form-group
+            label(for="nameNote") Название заметки
+            input.form-control#nameNote(
+                type='text'
+                placeholder='Название заметки')
+        div.form-group
+            label(for="descriptionNote") Описание
+            textarea.form-control#descriptionNote
+        div.form-group
+            button.btn.btn-success(type="submit") Создать
+            button.btn.btn-secondary(type="button") Отмена
