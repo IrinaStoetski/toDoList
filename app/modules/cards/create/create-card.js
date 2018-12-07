@@ -1,35 +1,28 @@
-// const express = require('express');
-// const fs = require('fs');
-// // const path = require('path');
-// const app = express();
-
-// app.set('views', './views');
-// app.set('view engine', 'pug');
+const express = require('express');
+const app = express();
 
 module.exports = (app, db) => {
-    app.get('/notes', (req, res) => {
-            res.render('test');
-        }
-    )}
     // app.route('/notes')
-    //     .get((req, res) => {
-    //         res.render('create-card', {});
-    //         }
-    //     )
-    //
-    //     .post(async (req, res) => {
-    //         let notes = {
-    //             title: req.body.title,
-    //             description: req.body.title
-    //         };
-    //
-    //         let result = null;
-    //
-    //         try {
-    //             result = await db.collection('testNotes').insertOne(notes);
-    //         } catch (err) {
-    //             console.log(err)
-    //         }
-    //
-    //         res.end('ok');
-    //     })
+    app.get('/notes', (req, res) => {
+        res.render('test');
+    })
+
+    app.post('/api/notes', async (req, res) => {
+            let newnotes = {
+                title: req.body.title,
+                description: req.body.description
+            }
+
+            let result = null;
+
+            try {
+                result = await db.collection('testNotes').insertOne(newnotes);
+            } catch (err) {
+                console.log(err);
+            }
+
+            res.send('add notes');
+            // res.render('main-page');
+        }
+    )
+}
