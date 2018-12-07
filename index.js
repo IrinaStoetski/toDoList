@@ -1,10 +1,12 @@
 const express = require('express');
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
-
+const cors = require('cors');
 const db = require('./config/db');
 
 let app = express();
+app.use(cors());
+app.use(bodyParser.urlencoded({extended:false}));
 
 app.set('views', './app/templates/');
 app.set('view engine', 'pug');
