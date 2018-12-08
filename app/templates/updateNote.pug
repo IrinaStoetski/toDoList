@@ -1,7 +1,9 @@
 extends layout
 
 block content
-    form(action="/api/notes/:id" method='POST')
+    form(action="/notess" method='POST')
+        div.form-group
+            input.form-control(type='text' name='id')
         div.form-group
             label(for="nameNote") Название заметки
             input.form-control#nameNote(type='text' name='title' )
@@ -9,6 +11,6 @@ block content
             label(for="descriptionNote") Описание
             textarea.form-control#descriptionNote(name='description')
         div.form-group
-            button.btn.btn-success(type="submit") Создать
+            button.btn.btn-success(type="submit") Сохранить изменения
             button.btn.btn-secondary(type="button") Отмена
             button.btn.btn-danger(type="button") Удалить
