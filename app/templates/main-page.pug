@@ -1,7 +1,10 @@
 extends layout
 block content
-	ul.list-unstyled
-			each color in ['Red', 'Yellow', 'Blue']
-				li
-					a(href="/notes")= color
+	div.list-group
+
+	- for (var x = 0; x < notes.length; x++)
+		a(href="/notes").list-group-item.list-group-item-action.flex-column.align-items-start.active
+			div.d-flex.w-100.justify-content-between
+				h5.mb-1= title
+			p.mb-11= description
 

@@ -14,7 +14,7 @@ app.get('/', async (req, res) => {
 	catch (err) {
 		console.log(err);
 	}
-	res.send(JSON.stringify(notes));
+/* 	res.send(JSON.stringify(notes)); */
 
 	res.render('main-page', {title: 'To do list', message: 'Hi!'})	
 });
