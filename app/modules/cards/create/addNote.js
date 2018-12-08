@@ -21,8 +21,8 @@ module.exports = (app, db) => {
                 console.log(err);
             }
 
-            res.send('add notes');
-            // res.render('main-page');
+            // res.send('add notes');
+            res.render('main-page', {notes: notes})
         }
     )
 }
