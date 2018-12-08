@@ -17,6 +17,7 @@ module.exports = (app, db) => {
 
             try {
                 result = await db.collection('to-do-list').insertOne(newnotes);
+
             } catch (err) {
                 console.log(err);
             }
