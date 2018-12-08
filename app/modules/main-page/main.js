@@ -6,8 +6,8 @@ app.get('/', async (req, res) => {
 	let result = null;
 	let notes = [];
 	try {
-		result = await db.collection('notes').find().forEach(element => {
-			arrProducts.push(element);
+		result = await db.collection('to-do-list').find().forEach(element => {
+			notes.push(element);
 		});
 		console.log(result);
 	}	
@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
 	}
 /* 	res.send(JSON.stringify(notes)); */
 
-	res.render('main-page', {title: 'To do list', message: 'Hi!'})	
+	res.render('main-page', {notes: notes})	
 });
 
 }

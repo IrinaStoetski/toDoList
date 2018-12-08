@@ -1,10 +1,14 @@
 extends layout
 block content
-	div.list-group
-
-	- for (var x = 0; x < notes.length; x++)
-		a(href="/notes").list-group-item.list-group-item-action.flex-column.align-items-start.active
-			div.d-flex.w-100.justify-content-between
-				h5.mb-1= title
-			p.mb-11= description
+	h1.text-center.mt-4= 'To-do List'
+	p.text-center= 'Save the most important things in one place'
+	div.list-group.flex-row.flex-wrap
+		- var colors = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-info', 'bg-dark'];
+		
+		- for (var x = 0; x < notes.length; x++)
+			- var color = colors[Math.floor(Math.random() * (colors.length - 0) + 0)];
+			a(href="/notes")(class=color).list-group-item.list-group-item-action.w-25.mr-3.mb-3.text-white
+				div.d-flex.w-100.justify-content-between
+					h5.mb-1.font-weight-bold= notes[x].title
+				p.mb-1.text-truncate= notes[x].description
 
