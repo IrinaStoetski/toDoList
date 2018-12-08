@@ -1,6 +1,8 @@
+/* const allNotes = require('../allNotes'); */
 module.exports = (app, db) => {
+
     app.get('/', async (req, res) => {
-        let result = null;
+         let result = null;
         const notes = [];
 
         try {
@@ -9,7 +11,7 @@ module.exports = (app, db) => {
             });
         } catch (err) {
             console.log(err);
-        }
+        } 
 
         res.render('main-page', {notes: notes});
     });

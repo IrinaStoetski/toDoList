@@ -1,7 +1,7 @@
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (app, db) =>{
-    app.get('/notess/:id', async (req, res) =>{
+    app.get('/notes/:id', async (req, res) =>{
         const query = {_id: ObjectId(req.params.id)};
 
         let result = null;
@@ -19,7 +19,7 @@ module.exports = (app, db) =>{
         res.send('ok');
     });
 
-    app.post('/notess/:id', async (req, res)=>{
+    app.post('/notes/:id', async (req, res)=>{
         const query = {_id: ObjectId(req.params.id)};
         const newData = {
             title: req.body.title,
@@ -33,6 +33,17 @@ module.exports = (app, db) =>{
             console.log(err);
         }
         // res.send('update note');
+
+        const notes = [];
+
+        try {
+            result = await db.collection('to-do-list').find().forEach((element) => {
+                notes.push(element);
+            });
+        } catch (err) {
+            console.log(err);
+        }
+
         res.render('main-page', {notes: notes});
     });
 };
