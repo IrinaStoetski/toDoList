@@ -17,13 +17,12 @@ module.exports = (app, db) => {
 
             try {
                 result = await db.collection('to-do-list').insertOne(newnotes);
-
             } catch (err) {
                 console.log(err);
             }
 
-            res.send('add notes');
-            // res.render('main-page');
+            // res.send('add notes');
+            res.render('main-page', {notes: notes})
         }
     )
 }

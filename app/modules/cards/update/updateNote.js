@@ -6,7 +6,7 @@ module.exports = (app, db) =>{
 
         let result = null;
         try{
-            result = await db.collection('testNotes').findOne(query);
+            result = await db.collection('to-do-list').findOne(query);
         } catch (err) {
             console.log(err);
         }
@@ -33,6 +33,7 @@ module.exports = (app, db) =>{
         } catch (err) {
             console.log(err);
         }
-        res.send('update note');
+        // res.send('update note');
+        res.render('main-page', {notes: notes})
     })
 }
