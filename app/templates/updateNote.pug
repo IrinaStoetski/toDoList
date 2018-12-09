@@ -1,14 +1,15 @@
 extends layout
 
 block content
-    form(action="/notess/"+id method='POST')
+    form(action="/notes/"+id enctype="application/x-www-form-urlencoded")
         div.form-group
             label(for="nameNote") Название заметки
             input.form-control#nameNote(type='text' name='title' value=title)
         div.form-group
             label(for="descriptionNote") Описание
-            input.form-control#descriptionNote(type='text' name='description' value=description)
+            textarea.form-control#descriptionNote(type='text' name='description') #{description}
         div.form-group
-            button.btn.btn-success(type="submit") Сохранить изменения
-            button.btn.btn-secondary(type="button") Отмена
-            button.btn.btn-danger(type="button") Удалить
+            input(type="hidden" name="_method" value="PUT")
+            button.btn.btn-success(type="submit" name="save") Сохранить изменения
+            button.btn.btn-secondary(type="button" name="close") Отмена
+            button.btn.btn-danger(type="text" name='delete' formmethod='post' formaction='/notesdel/'+id ) Удалить

@@ -6,7 +6,7 @@ app.get('/', async (req, res) => {
 	let result = null;
 	let notes = [];
 	try {
-		result = await db.collection('to-do-list').find().forEach(element => {
+		result = await db.collection('testNotes').find().forEach(element => {
 			notes.push(element);
 		});
 		console.log(result);

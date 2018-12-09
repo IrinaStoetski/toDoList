@@ -1,7 +1,25 @@
+const express = require('express');
+let app = express();
 const ObjectId = require('mongodb').ObjectId;
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:false}));
+
+const methodOverride = require('method-override');
+app.use(methodOverride('X-HTTP-Method'));
+app.use(methodOverride('X-HTTP-Method-Override'));
+app.use(methodOverride('X-Method-Override'));
+// app.use(methodOverride('_method', { methods: ['POST', 'PUT'] }));
+
+app.use(methodOverride(function (req, res) {
+    if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+        let method = req.body._method;
+        delete req.body._method;
+        return method;
+    }
+}));
 
 module.exports = (app, db) =>{
-    app.get('/notess/:id', async (req, res) =>{
+    app.get('/notes/:id', async (req, res) =>{
         let query = {_id: ObjectId(req.params.id)};
 
         let result = null;
@@ -16,10 +34,10 @@ module.exports = (app, db) =>{
             description: result.description
         }
         res.render('updateNote', {id:showData.id, title: showData.title, description: showData.description});
-        res.send('ok');
-    })
+        // res.send('ok');
+    });
 
-    app.post('/notess/:id',  async (req, res)=>{
+    app.put('/notes/:id',  async (req, res)=>{
         let query = {_id: ObjectId(req.params.id)};
         let newData = {
             title: req.body.title,
@@ -33,7 +51,7 @@ module.exports = (app, db) =>{
         } catch (err) {
             console.log(err);
         }
-        // res.send('update note');
-        res.render('main-page', {notes: notes})
+        res.send('update note');
+        // res.render('main-page')
     })
 }
