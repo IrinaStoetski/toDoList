@@ -1,22 +1,18 @@
-const MongoClient = require('mongodb').MongoClient;
-
+/* const allNotes = require('../allNotes'); */
 module.exports = (app, db) => {
 
-app.get('/', async (req, res) => {
-	let result = null;
-	let notes = [];
-	try {
-		result = await db.collection('testNotes').find().forEach(element => {
-			notes.push(element);
-		});
-		console.log(result);
-	}	
-	catch (err) {
-		console.log(err);
-	}
-/* 	res.send(JSON.stringify(notes)); */
+    app.get('/', async (req, res) => {
+         let result = null;
+        const notes = [];
 
-	res.render('main-page', {notes: notes})	
-});
+        try {
+            result = await db.collection('to-do-list').find().forEach((element) => {
+                notes.push(element);
+            });
+        } catch (err) {
+            console.log(err);
+        }
 
-}
+        res.render('main-page', {notes: notes});
+    });
+};
