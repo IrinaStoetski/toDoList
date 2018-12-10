@@ -1,11 +1,10 @@
 extends layout
 block content
-		h1.text-center.mt-4.font-weight-bold= 'To-do List'  
-
-		p.text-center= 'Save the most important things in one place'
-
-		a(href="/notes").btn.btn-primary.btn-lg.d-block.w-25.ml-auto.mr-auto.mb-4= 'Add note'
-		div.list-group.flex-row.flex-wrap.justify-content-around.w-75.ml-auto.mr-auto  
+		h1.text-center.mt-5.font-weight-bold= 'To-do List - Save the most important things in one place'  
+		div.d-flex.align-items-center.mb-4.mt-5.justify-content-around
+			a(href="/notes").btn.btn-primary.btn-lg.d-block.w-25= 'Add note'
+			a(href="/list").btn.btn-info.btn-lg.d-block.w-25= 'Add list'
+		div.list-group.flex-row.flex-wrap.justify-content-around.w-100.ml-auto.mr-auto  
 
 			- var colors = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-info', 'bg-dark']; 
 
