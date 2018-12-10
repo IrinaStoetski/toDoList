@@ -32,18 +32,7 @@ module.exports = (app, db) =>{
         } catch (err) {
             console.log(err);
         }
-        // res.send('update note');
+        res.redirect("/");
 
-        const notes = [];
-
-        try {
-            result = await db.collection('to-do-list').find().forEach((element) => {
-                notes.push(element);
-            });
-        } catch (err) {
-            console.log(err);
-        }
-
-        res.render('main-page', {notes: notes});
     });
 };
