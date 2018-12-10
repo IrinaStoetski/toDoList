@@ -1,0 +1,17 @@
+	.list-group .list-group-item {
+		min-width: 310px;
+		min-height: 320px;
+	}
+
+	.btn {
+		min-width: 310px;
+		padding: 20px;
+	}
+
+	.list-group-item p {
+		width: 100%;
+		overflow: unset;
+		word-break: break-word;
+		white-space: normal;
+	}
+
