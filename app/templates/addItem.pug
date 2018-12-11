@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	form(action="/lists" method='POST')
+		div.form-group
+			label(for="nameItem") Название задачи
+			input.form-control#title(type='text' name='title' placeholder='Enter' required)
+			label(for="nameDescription") Краткое описание задачи
+			input.form-control#description(type='text' name='description' placeholder='Enter' required)+++
+		button.btn.btn-primary#btn(type='submit') Добавить задачу
+
+		- for (var x = 0; x < items.length; x++)
+
+			ul.list-group.mt-3
+				li.list-group-item.list-group-item-primary.mt-3
+					h3.mb-1.font-weight-bold.text-truncate= items[x].title
+					p.mb-1.text-truncate= items[x].description

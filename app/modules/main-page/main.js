@@ -11,8 +11,7 @@ module.exports = (app, db) => {
             });
         } catch (err) {
             console.log(err);
-        } 
-
-        res.render('main-page', {notes: notes});
+        }
+        res.render('addItem', {notes: notes});
     });
 };
