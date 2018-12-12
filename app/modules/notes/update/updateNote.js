@@ -15,8 +15,8 @@ module.exports = (app, db) =>{
             title: result.title,
             description: result.description,
         };
-        res.render('updateNote', {id: showData.id, title: showData.title, description: showData.description});
-        res.send('ok');
+        res.render('updateNote', {notes: showData});
+         res.send('ok'); 
     });
 
     app.post('/notes/:id', async (req, res)=>{
