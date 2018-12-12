@@ -5,12 +5,12 @@ block content
         div.form-group
             label(for="nameNote") Название заметки
             input.form-control#noteId(type='hidden' value=id)
-            input.form-control#nameNote(type='text' name='title' value=title)
+            input.form-control#nameNote(type='text' name='title' value=notes.title)
         div.form-group
             label(for="descriptionNote") Описание
-            textarea.form-control#descriptionNote(type='text' name='description') #{description}
+            textarea.form-control#descriptionNote(type='text' name='description') #{notes.description}
         div.form-group
             input(type='hidden' name='_method' value='put')
             button.btn.btn-success(type="button" onclick='postData()' name="save") Сохранить изменения
             button.btn.btn-secondary#cl(type="submit" name="close") Отмена
-            button.btn.btn-danger(type="text" name='delete' formmethod='post' formaction='/notesdel/'+id ) Удалить
+            button.btn.btn-danger(type="text" name='delete' formmethod='post' ) Удалить

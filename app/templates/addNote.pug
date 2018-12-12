@@ -1,7 +1,7 @@
 extends layout
 
 block content
-    form(action="/api/notes" method='POST')
+    form(action="/notes" method='POST')
         div.form-group
             label(for="nameNote") Название заметки
             input.form-control#nameNote(type='text' name='title' placeholder='Название заметки')
