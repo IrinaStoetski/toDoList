@@ -1,5 +1,3 @@
-/* const allNotes = require('../allNotes'); */
-
 module.exports = (app, db) => {
 
     app.get('/', async (req, res) => {
@@ -11,7 +9,9 @@ module.exports = (app, db) => {
                 notes.push(element);
             });
         } catch (err) {
-            console.log(err);
+            console.log(err);       
+        }
         res.render('main-page', {notes: notes});
+   
     });
 };
