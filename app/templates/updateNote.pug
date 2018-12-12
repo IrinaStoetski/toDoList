@@ -4,7 +4,7 @@ block content
     form#myform( method='post')
         div.form-group
             label(for="nameNote") Название заметки
-            input.form-control#noteId(type='hidden' value=id)
+            input.form-control#noteId(type='hidden' value=notes.id)
             input.form-control#nameNote(type='text' name='title' value=notes.title)
         div.form-group
             label(for="descriptionNote") Описание

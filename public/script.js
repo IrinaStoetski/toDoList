@@ -3,42 +3,39 @@ console.log(45);
 // document.getElementById('cl').addEventListener('click', postData);
 
 function postData() {
-    // event.preventDefault();
+    event.preventDefault();
 
     let noteId = document.getElementById('noteId').value;
     console.log(noteId);
 
     // let form = new FormData(document.getElementById('myform'));
-    // let firstname = document.getElementById('nameNote').value;
-    // let secondname = document.getElementById('descriptionNote').value;
+    let firstname = document.getElementById('nameNote').value;
+    let secondname = document.getElementById('descriptionNote').value;
+    console.log(firstname);
 
     const formData = new FormData(document.getElementById('myform'));
+    console.log(noteId);
+
     fetch('http://localhost:8000/notes/' + noteId, {
         method: 'put',
-        body: formData
+        body: {
+            title: firstname,
+            description: secondname
+        }
     }).then(response => {
-        response.text().then(function (newData) {
-            // document.getElementById('nameNote').value = newData.title;
-            // document.getElementById('descriptionNote').value = newData.description;
+        response.text().then(function (firstname, secondname) {
+            // if (!response.ok){
+            //     console.log('1');
+            // }else {
+            //     console.log('2');
+            // }
+            // document.getElementById('nameNote').value = firstname;
+            // document.getElementById('descriptionNote').value = secondname;
+
         })
     })
 }
 
-// function postData(event) {
-//     event.preventDefault();
-//
-//     // let form = new FormData(document.getElementById('myform'));
-//     // let firstname = document.getElementById('nameNote').value;
-//     // let secondname = document.getElementById('descriptionNote').value;
-//
-//     const formData = new FormData(document.getElementById('myform'));
-//     return fetch('http://localhost:8000/notes/5c0bc62379822609704a05da', {method: 'put', body: formData}).then(response => {
-//             response.text().then(function (titleNote, description) {
-//                 document.getElementById('nameNote').value = titleNote;
-//                 document.getElementById('descriptionNote').value = description;
-//             })
-//         })
-// }
 $.ajax({
   url: '/lists-items',
   success: function(data){
