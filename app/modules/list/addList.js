@@ -5,22 +5,27 @@ const app = express();
 module.exports = (app, db) => {
 
 	app.get('/lists', async (req, res) =>{
-		let query = {name: 'task'};
+		res.render('addList');
+    });
+
+	app.get('/lists-items', async (req, res) =>{
 		const items = [];
 		try {
-			result = await db.collection('tasks').find().forEach((element) => {
+			result = await db.collection('to-do-list').find().forEach((element) => {
                 items.push(element);
             });
+
 		} catch (err) {
 			console.log(err);
 		}
-		console.log(items);
-        res.render('addItem', {items: items});
+		var tempItems = JSON.stringify(items);
+		res.send(tempItems);
     });
+
 
 	app.post('/lists', async (req, res) => {
 		const newitems = {
-			name: "task",
+			name: "tasks",
             title: req.body.title,
             description: req.body.description,
         };
@@ -29,7 +34,7 @@ module.exports = (app, db) => {
 
 		try {
 			if (newitems.title != null || newitems.description != null) {
-				result = await db.collection('tasks').insertOne(newitems);
+				result = await db.collection('to-do-list').insertOne(newitems);
 			} else {
 				throw new Error('No data in field');
 			}
