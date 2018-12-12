@@ -20,9 +20,7 @@ module.exports = (app, db) => {
         } catch (err) {
             console.log(err);
         }
-
-        // res.send('add notes');
-        res.render('main-page', {notes: notes});
+        res.redirect('/');
     }
     );
 };

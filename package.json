@@ -26,6 +26,7 @@
     "should": "^13.2.3",
     "supertest": "^3.3.0"
   },
-  "eslintIgnore": ["node_modules/*"]
-
+  "eslintIgnore": [
+    "node_modules/*"
+  ]
 }

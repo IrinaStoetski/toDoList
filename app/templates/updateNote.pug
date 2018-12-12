@@ -4,11 +4,13 @@ block content
     form#myform( method='post')
         div.form-group
             label(for="nameNote") Название заметки
-            input.form-control#nameNote(type='text' name='titleNote' value=titleNote)
+            input.form-control#noteId(type='hidden' value=id)
+            input.form-control#nameNote(type='text' name='title' value=title)
         div.form-group
             label(for="descriptionNote") Описание
             textarea.form-control#descriptionNote(type='text' name='description') #{description}
         div.form-group
-            button.btn.btn-success(type="submit" onclick='postData()' name="save") Сохранить изменения
+            input(type='hidden' name='_method' value='put')
+            button.btn.btn-success(type="button" onclick='postData()' name="save") Сохранить изменения
             button.btn.btn-secondary#cl(type="submit" name="close") Отмена
             button.btn.btn-danger(type="text" name='delete' formmethod='post' formaction='/notesdel/'+id ) Удалить
