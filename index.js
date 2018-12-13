@@ -11,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('views', './app/templates/'); 
+app.set('views', './app/templates/');
 app.set('view engine', 'pug');
 
 MongoClient.connect(db.url, { useNewUrlParser: true }, (err, client) => {

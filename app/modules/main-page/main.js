@@ -9,9 +9,9 @@ module.exports = (app, db) => {
                 notes.push(element);
             });
         } catch (err) {
-            console.log(err);       
+            console.log(err);
         }
         res.render('main-page', {notes: notes});
-   
+
     });
 };
