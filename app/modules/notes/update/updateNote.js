@@ -16,12 +16,13 @@ module.exports = (app, db) =>{
             description: result.description,
         };
         res.render('updateNote', {notes: showData});
-         res.send('ok'); 
+        res.send('ok'); 
     });
 
     app.post('/notes/:id', async (req, res)=>{
         const query = {_id: ObjectId(req.params.id)};
         const newData = {
+            _id: query._id,
             title: req.body.title,
             description: req.body.description,
         };
@@ -32,7 +33,7 @@ module.exports = (app, db) =>{
         } catch (err) {
             console.log(err);
         }
-        res.redirect("/");
+   /*      res.redirect("/"); */
 
     });
 };

@@ -1,22 +1,29 @@
 extends layout
 block content
+	div.d-flex.flex-column.align-items-center
 		h1.text-center.mt-5.font-weight-bold= 'To-do List - Save the most important things in one place'  
 		div.d-flex.align-items-center.mb-4.mt-5.justify-content-around
-			a(href="/notes").btn.btn-primary.btn-lg.d-block.w-25= 'Add note'
-			a(href="/lists").btn.btn-info.btn-lg.d-block.w-25= 'Add list'
-		div.list-group.flex-row.flex-wrap.justify-content-around.w-100.ml-auto.mr-auto  
+			a(href="/notes").btn.btn-primary.btn-lg.d-block.mr-5
+				i.fas.fa-plus.mr-4
+				= 'Add note'			
+			a(href="/lists").btn.btn-primary.btn-lg.d-block
+				i.fas.fa-plus.mr-4
+				= 'Add list'
+		div.list-group.flex-row.flex-wrap.w-100.ml-auto.mr-auto  
 
-			- var colors = ['bg-primary', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-info', 'bg-dark']; 
+			- var colors = ['bg-sky-blue', 'bg-lime', 'bg-peru', 'bg-slate-blue', 'bg-blue', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-info', 'bg-dark']; 
 
 			- for (var x = 0; x < notes.length; x++)
 
 				- var color = colors[Math.floor(Math.random() * (colors.length - 0) + 0)]; // random bg-color for note
 				- var id = '/notes/' + notes[x]._id;
 
-				a(href=id)(class=color).list-group-item.list-group-item-action.w-25.m-3.text-white
+				a(href=id)(class=color).list-group-item.w-25.m-3.text-white
 
 					div.d-flex.w-100.justify-content-between
-
-						h4.mb-1.font-weight-bold.text-truncate= notes[x].title
+						if notes[x].title
+							h4.mb-1.font-weight-bold.text-truncate= notes[x].title
+						else 
+							h4.mb-1.font-weight-bold.text-truncate= 'Untitled'
 
 					p.mb-1.text-truncate= notes[x].description
