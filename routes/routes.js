@@ -1,4 +1,3 @@
-
 const mainPage = require('../app/modules/main-page/main');
 const addNote = require('../app/modules/notes/create/addNote');
 const updateNote = require('../app/modules/notes/update/updateNote');
