@@ -20,18 +20,12 @@ block content
 
 				a(href=id)(class=color).list-group-item.w-25.m-3.text-white
 
-					div.d-flex.w-100.justify-content-between
 						if notes[x].title
 
-							h4.mb-1.font-weight-bold.h1= notes[x].title
+							h4.mb-1.font-weight-bold.h1= notes[x].title 
+
+							p.mb-1.h1= notes[x].description
 						else
 							h4.mb-1.font-weight-bold.h1= 'Untitled'
 
-					p.mb-1.h1= notes[x].description
-
-							h4.mb-1.font-weight-bold.text-truncate= notes[x].title
-						else
-							h4.mb-1.font-weight-bold.text-truncate= 'Untitled'
-
-					p.mb-1.text-truncate= notes[x].description
-
+							p.mb-1.h1= notes[x].description
