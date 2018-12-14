@@ -8,6 +8,7 @@ module.exports = (app, db) =>{
         try {
             result = await db.collection('to-do-list').findOne(query);
         } catch (err) {
+            if(result)
             console.log(err);
         }
         const showData = {
@@ -16,7 +17,6 @@ module.exports = (app, db) =>{
             description: result.description,
         };
         res.render('updateNote', {notes: showData});
-         // res.send('ok');
     });
 
     app.put('/notes/:id', async (req, res) => {

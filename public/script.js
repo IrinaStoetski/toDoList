@@ -17,8 +17,22 @@ function postData() {
       console.log(error);
     });
 };
+function deleteData() {
+  event.preventDefault();
+  let noteId = document.getElementById("noteId").value;
 
- $.ajax({
+  axios.delete(`/notes/${noteId}`, {
+    _id: noteId
+  })
+    .then(function(response) {
+      console.log(response.status);
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+};
+
+/* $.ajax({
   url: '/lists-items',
   success: function(data){
 	let ul = document.getElementById("list");
@@ -32,4 +46,4 @@ function postData() {
 		ul.appendChild(div);
 	}
   }
-}); 
+}); */
