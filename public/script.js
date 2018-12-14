@@ -1,38 +1,43 @@
-console.log(45);
+console.log("script is working");
 
-function postData() {
+let postData = () => {
   event.preventDefault();
   let noteId = document.getElementById("noteId").value;
   let noteTitle = document.getElementById("nameNote").value;
   let noteDescription = document.getElementById("descriptionNote").value;
 
-  axios.put(`/notes/${noteId}`, {
+  axios
+    .put(`/notes/${noteId}`, {
       title: noteTitle,
       description: noteDescription
     })
-    .then(function(response) {
+    .then(response => {
+      window.location.replace('/');
       console.log(response.status);
     })
-    .catch(function(error) {
+    .catch(error => {
       console.log(error);
     });
 };
-function deleteData() {
+
+let deleteData = () => {
   event.preventDefault();
   let noteId = document.getElementById("noteId").value;
 
-  axios.delete(`/notes/${noteId}`, {
-    _id: noteId
-  })
-    .then(function(response) {
-      console.log(response.status);
+  axios
+    .delete(`/notes/${noteId}`, {
+      _id: noteId
     })
-    .catch(function(error) {
+    .then(response => {
+      window.location.replace('/');
+      console.log(response.status);   
+    })
+    .catch(error => {
       console.log(error);
     });
 };
 
-/* $.ajax({
+/*  $.ajax({
   url: '/lists-items',
   success: function(data){
 	let ul = document.getElementById("list");
@@ -46,4 +51,4 @@ function deleteData() {
 		ul.appendChild(div);
 	}
   }
-}); */
+});  */

@@ -21,7 +21,7 @@ MongoClient.connect(db.url, { useNewUrlParser: true }, (err, client) => {
 	const database = client.db(db.dbName);
 	require('./routes/routes.js')(app, database);
 
-	app.listen(5000, () => {
+	app.listen(8000, () => {
 		console.log('Connected to ' + db.url);
 		console.log('We are live on http://localhost:8000');
 	});
