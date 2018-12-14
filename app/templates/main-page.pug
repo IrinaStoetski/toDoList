@@ -22,7 +22,7 @@ block content
 					- var color = colors[Math.floor(Math.random() * (colors.length - 0) + 0)]; // random bg-color for note
 					- var id = '/notes/' + notes[x]._id;
 
-					a(href=id)(class=color).list-group-item.w-25.m-3.text-white
+					a(href=id class=color).list-group-item.w-25.m-3.text-white
 
 							if notes[x].title
 
