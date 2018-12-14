@@ -12,6 +12,7 @@ let postData = () => {
       description: noteDescription
     })
     .then(response => {
+      window.location.replace('/');
       console.log(response.status);
     })
     .catch(error => {
@@ -28,7 +29,8 @@ let deleteData = () => {
       _id: noteId
     })
     .then(response => {
-      console.log(response.status);
+      window.location.replace('/');
+      console.log(response.status);   
     })
     .catch(error => {
       console.log(error);
