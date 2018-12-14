@@ -1,5 +1,4 @@
 const ObjectId = require('mongodb').ObjectId;
-
 module.exports = (app, db) =>{
     app.get('/notes/:id', async (req, res) =>{
         const query = {_id: ObjectId(req.params.id)};
@@ -16,32 +15,20 @@ module.exports = (app, db) =>{
             description: result.description,
         };
         res.render('updateNote', {notes: showData});
-         // res.send('ok');
     });
 
-    app.put('/notes/:id', async (req, res)=>{
-        console.log('PUT work')
+    app.delete('/notes/:id', async (req, res) => {
+        console.log('delete work');
         const query = {_id: ObjectId(req.params.id)};
-        console.log(query._id);
-        const newData = {
-            _id: query._id,
-            title: req.body.title,
-            description: req.body.description,
-        };
-        console.log(newData.title);
-        console.log(newData);
+        console.log(query);
 
         let result = null;
-
         try {
-            result = await db.collection('to-do-list').updateOne(query, {$set: newData}, {upsert: true});
-            console.log('test = ' + result.title);
+            result = await db.collection('to-do-list').deleteOne(query);
         } catch (err) {
             console.log(err);
         }
-        // res.redirect("/");
-        // let tempnotes = JSON.stringify(result);
-        res.send('update note');
-        res.render('updateNote', { notes: newData });
+        res.send('delete note');
+        res.redirect("/");
     });
 };
