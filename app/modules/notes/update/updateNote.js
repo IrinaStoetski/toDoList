@@ -19,7 +19,7 @@ module.exports = (app, db) =>{
          // res.send('ok');
     });
 
-    app.put('/notes/:id', async (req, res)=>{
+    app.put('/notes/:id', async (req, res) => {
         console.log('PUT work')
         const query = {_id: ObjectId(req.params.id)};
         console.log(query);
@@ -27,17 +27,13 @@ module.exports = (app, db) =>{
             _id: query._id,
             title: req.body.title,
             description: req.body.description,
-        };
-        console.log(newData.title);
+        };          
         let result = null;
-
         try {
             result = await db.collection('to-do-list').updateOne(query, {$set: newData}, {upsert: true});
-            console.log('test = ' + result.title);
         } catch (err) {
             console.log(err);
         }
-        // res.redirect("/");
-        res.send('update note');
+        res.render('updateNote', {notes: newData});
     });
 };
