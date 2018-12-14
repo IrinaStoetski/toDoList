@@ -1,5 +1,3 @@
-const express = require('express');
-const app = express();
 
 module.exports = (app, db) => {
     app.get('/notes', (req, res) => {
@@ -20,7 +18,6 @@ module.exports = (app, db) => {
             console.log(err);
         }
 
-        //res.send('add notes');
         res.redirect("/");
     }
     );
