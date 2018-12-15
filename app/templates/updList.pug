@@ -1,0 +1,16 @@
+extends layout
+
+block content
+		form#upd(data-rel=id)
+			div.form-group
+				label(for="nameList") Название заметки
+				input.form-control#nameList(type='text' name='title' value=title)
+			div.form-group
+				label(for="descriptionList") Описание
+				input.form-control#descriptionList(type='text' name='description' value=description)
+			div.form-group
+				input.btn.btn-success(type="button" onclick='sendList()' value="Сохранить изменения")
+				a(href="/list").btn.btn-secondary(type="button") Отмена
+				button.btn.btn-danger(type="button") Удалить
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+		script(src="/lists.js")

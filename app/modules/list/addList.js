@@ -4,55 +4,47 @@ const app = express();
 
 
 module.exports = (app, db) => {
-  app.get('/lists', async (req, res) => {
-    res.render('addList');
-  });
+	app.get('/list', async (req, res) =>{
+		res.render('list');
+	});
 
-  app.get('/lists-items', async (req, res) => {
-    const items = [];
-    try {
-      result = await db.collection('to-do-list').find().forEach((element) => {
-        items.push(element);
-      });
-    } catch (err) {
-      console.log(err);
-    }
-    const tempItems = JSON.stringify(items);
-    res.send(tempItems);
-  });
+	app.get('/getlist', async (req, res) =>{ 	// Обращение ajax, получить данные
+		const items = [];
+		try {
+			result = await db.collection('to-do-list').find({name:"tasks"}).forEach((element) => {	//найти заметки по ключу "tasks"
+                items.push(element);
+            });
 
+		} catch (err) {
+			console.log(err);
+		}
+		var tempItems = JSON.stringify(items);
+		res.send(tempItems);					// вернуть список axios
+    });
 
-  app.post('/lists', async (req, res) => {
-    const newitems = {
-      name: 'tasks',
-      title: req.body.title,
-      description: req.body.description,
-    };
+	app.get('/list-add', async (req, res) =>{	// <a> ccылаеться на добавление заметки
+		res.render('addList');					// вернуть pug страницу
+    });
 
-    let result = null;
+	app.post('/lists-items', async (req, res) => {	// <form> ccылается на добавление
+		const newitems = {
+			name: "tasks",
+            title: req.body.title,
+            description: req.body.description,
+			listarr: []
+        };
 
-    try {
-      if (newitems.title != null || newitems.description != null) {
-        result = await db.collection('to-do-list').insertOne(newitems);
-      } else {
-        throw new Error('No data in field');
-      }
-    } catch (err) {
-      console.log(err);
-    }
-    res.redirect('/lists');
-  });
+        let result = null;
+
+		try {
+			if (newitems.title != null || newitems.description != null) {
+				result = await db.collection('to-do-list').insertOne(newitems);
+			} else {
+				throw new Error('No data in field');
+			}
+		} catch (err) {
+			console.log(err);
+		}
+		res.redirect('/');
+    });
 };
-
-// app.get('/lists', async (req, res) =>{
-//		let query = {name: 'task'}
-//		try {
-//			result = await db.collection('tasks').find({}).toArray(function(err, result) {
-//				if (err) throw err;
-//				res.end(JSON.stringify(result));
-//			});
-//		} catch (err) {
-//			console.log(err);
-//		}
-//        //res.render('addItem');
-//    });

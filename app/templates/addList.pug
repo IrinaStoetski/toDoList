@@ -1,11 +1,16 @@
-extends layout
-
-block content
-	form(action="/lists" method='POST')
-		div.form-group
-			label(for="nameItem") Название задачи
-			input.form-control#title(type='text' name='title' placeholder='Enter' required)
-			label(for="nameDescription") Краткое описание задачи
-			input.form-control#description(type='text' name='description' placeholder='Enter' required)
-		button.btn.btn-primary#btn(type='submit') Добавить задачу
-		ul#list.list-group.mt-3
+doctype html
+head
+		title= title
+		link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous")
+		link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h" crossorigin="anonymous")
+body
+	div.container
+		form(action="/lists-items" method='POST')
+			div.form-group
+				label(for="nameItem") Название задачи
+				input.form-control#title(type='text' name='title' placeholder='Enter' required)
+				label(for="nameDescription") Краткое описание задачи
+				input.form-control#description(type='text' name='description' placeholder='Enter' required)
+			button.btn.btn-primary#btn(type='submit') Добавить задачу
+			script(src="https://unpkg.com/axios/dist/axios.min.js")
+			script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
