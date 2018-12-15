@@ -31,6 +31,7 @@ module.exports = (app, db) => {
 			name: "tasks",
             title: req.body.title,
             description: req.body.description,
+			listarr: []
         };
 
         let result = null;

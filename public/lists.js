@@ -15,7 +15,8 @@ window.onload = function() {
 							<p class="mb-1 text-truncate">${arr[i].description}</p>
 							<a href="/list-add">+</a></br>
 							<a href="/del/${arr[i]._id}" onclick="deleteList(this)">x</a></br>
-							<a href="/updget/${arr[i]._id}"><i class="fas fa-pencil-alt"></i></a>`;
+							<a href="/updget/${arr[i]._id}"><i class="fas fa-pencil-alt"></i></a></br>
+							<button type="button" class="btn btn-outline-success">Создать заметку</button>`;
 			ul.appendChild(li);
 		}
 	})
