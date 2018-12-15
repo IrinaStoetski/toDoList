@@ -21,7 +21,6 @@ module.exports = (app, db) => {
   app.put('/notes/:id', async (req, res) => {
     console.log('PUT work');
     const query = { _id: ObjectId(req.params.id) };
-    console.log(query);
     const newData = {
       _id: query._id,
       title: req.body.title,

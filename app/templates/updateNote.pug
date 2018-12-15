@@ -12,5 +12,5 @@ block content
         div.form-group.d-flex.flex-column.align-items-center
             input(type='hidden' name='_method' value='put')
             button.btn.btn-success.mb-4.mt-4(type="button" onclick='postData()' name="save") Сохранить изменения
-            button.btn.btn-secondary.mb-4#cl(type="button" name="close") Отмена
-            button.btn.btn-danger(type="text" name='delete' onclick='deleteData()') Удалить
+            button.btn.btn-secondary.mb-4#cl(type="button" onclick="closeData()" name="close") Отмена
+            button.btn.btn-danger(type="button" name='delete' onclick='deleteData()') Удалить

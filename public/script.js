@@ -18,7 +18,7 @@ let postData = () => {
     .catch(error => {
       console.log(error);
     });
-};
+}
 
 let deleteData = () => {
   event.preventDefault();
@@ -30,13 +30,16 @@ let deleteData = () => {
     })
     .then(response => {
       window.location.replace('/');
-      console.log(response.status);   
+      console.log(response.status);
     })
     .catch(error => {
       console.log(error);
     });
-};
-
+}
+function closeData() {
+    event.preventDefault();
+    document.location.href = "http://localhost:8000";
+}
 /*  $.ajax({
   url: '/lists-items',
   success: function(data){

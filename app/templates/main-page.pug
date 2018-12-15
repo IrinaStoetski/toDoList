@@ -12,7 +12,7 @@ block content
 		if notes[0]
 
 			h1.text-center.mt-5.font-weight-bold= 'To-do List - Save the most important things in one place'
-			
+
 			div.list-group.flex-row.flex-wrap.align-items-start.w-100.ml-auto.mr-auto
 
 				- var colors = ['bg-sky-blue', 'bg-lime', 'bg-peru', 'bg-slate-blue', 'bg-blue', 'bg-secondary', 'bg-success', 'bg-warning', 'bg-info', 'bg-dark'];
@@ -22,11 +22,11 @@ block content
 					- var color = colors[Math.floor(Math.random() * (colors.length - 0) + 0)]; // random bg-color for note
 					- var id = '/notes/' + notes[x]._id;
 
-					a(href=id)(class=color).list-group-item.w-25.m-3.text-white
+					a(href=id class=color).list-group-item.w-25.m-3.text-white
 
 							if notes[x].title
 
-								h4.mb-1.font-weight-bold.h1= notes[x].title 
+								h4.mb-1.font-weight-bold.h1= notes[x].title
 
 								p.mb-1.h1= notes[x].description
 							else
@@ -36,4 +36,3 @@ block content
 		else
 			p.h1.mt-5= 'Add your first note or list'
 
-	
