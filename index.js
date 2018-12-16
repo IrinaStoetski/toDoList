@@ -25,4 +25,7 @@ MongoClient.connect(db.url, { useNewUrlParser: true }, (err, client) => {
 		console.log('Connected to ' + db.url);
 		console.log('We are live on http://localhost:8000');
 	});
+
+	module.exports = app;
+
 })
