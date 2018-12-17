@@ -11,6 +11,6 @@ module.exports = (app, db) => {
       console.log(err);
     }
     console.log(notes);
-    res.render('main-page', {notes});
+    res.render('main-page', { notes });
   });
 };
