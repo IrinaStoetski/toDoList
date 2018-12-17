@@ -29,7 +29,7 @@ module.exports = (app, db) => {
     let result = null;
     try {
       result = await db
-        .collection("to-do-list")
+        .collection('to-do-list')
         .updateOne(query, { $set: newData }, { upsert: true });
     } catch (err) {
       console.log(err);
