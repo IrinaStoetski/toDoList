@@ -14,7 +14,7 @@ const supertest = require("supertest");
 const server = supertest.agent("http://localhost:8000");
 const should = require('should');
 
-describe('POST /note', function() {
+describe('Testing method post - create new note', function() {
     it('add new note', function(done) {
         let note = {
             title: 'note1',
@@ -26,9 +26,6 @@ describe('POST /note', function() {
             .set('Accept', 'application/json')
             .end((err, res) => {
                 if (err) return done(err);
-
-                // res.body.note.should.have.property('title');
-                // res.body.note.should.have.property('description');
                 done();
             });
     });
