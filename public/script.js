@@ -13,7 +13,6 @@ let postData = () => {
     })
     .then(response => {
       window.location.replace("/");
-      console.log(response.status);
     })
     .catch(error => {
       console.log(error);
@@ -30,7 +29,6 @@ let deleteData = () => {
     })
     .then(response => {
       window.location.replace("/");
-      console.log(response.status);
     })
     .catch(error => {
       console.log(error);
@@ -39,5 +37,5 @@ let deleteData = () => {
 
 let closeData = () => {
   event.preventDefault();
-  document.location.href = "http://localhost:8000";
+  document.location.href = "http://localhost:9000";
 };
