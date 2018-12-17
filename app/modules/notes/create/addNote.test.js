@@ -1,7 +1,4 @@
-// // "test": "mocha \"./app/modules/notes/create/*.test.js\" ",
-// "test": "mocha './app/**/*.js' tests",
 const express = require('express');
-
 const app = express();
 const chai = require('chai');
 const chaiHttp = require('chai-http');
