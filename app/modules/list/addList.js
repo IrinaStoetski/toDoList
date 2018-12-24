@@ -1,5 +1,4 @@
 const express = require('express');
-
 const app = express();
 
 
@@ -31,7 +30,7 @@ module.exports = (app, db) => {
 			name: "tasks",
             title: req.body.title,
             description: req.body.description,
-			listarr: []
+			listObj: []
         };
 
         let result = null;

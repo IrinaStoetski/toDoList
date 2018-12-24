@@ -10,7 +10,6 @@ module.exports = (app, db) => {
     } catch (err) {
       console.log(err);
     }
-    console.log(notes);
     res.render('main-page', {notes});
   });
 };

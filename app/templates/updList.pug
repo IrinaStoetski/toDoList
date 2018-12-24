@@ -11,6 +11,6 @@ block content
 			div.form-group
 				input.btn.btn-success(type="button" onclick='sendList()' value="Сохранить изменения")
 				a(href="/list").btn.btn-secondary(type="button") Отмена
-				button.btn.btn-danger(type="button") Удалить
+				button.btn.btn-danger(type="button"  onclick='deleteList()') Удалить
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
 		script(src="/lists.js")

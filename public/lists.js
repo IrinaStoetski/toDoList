@@ -4,10 +4,9 @@ window.onload = function() {
 	.get('/getlist')
 	.then(response => {
 		let arr = [];
-		for (key in response.data) {
+		for (let key in response.data) {
 			arr.push(response.data[key])
 		}
-
 		for(let i = 0; i < arr.length; i++) {
 			let li = document.createElement("LI");
 			li.className = "list-group-item list-group-item-primary mt-3";
@@ -16,8 +15,34 @@ window.onload = function() {
 							<a href="/list-add">+</a></br>
 							<a href="/del/${arr[i]._id}" onclick="deleteList(this)">x</a></br>
 							<a href="/updget/${arr[i]._id}"><i class="fas fa-pencil-alt"></i></a></br>
-							<button type="button" class="btn btn-outline-success">Создать заметку</button>`;
+							<form class="form" name="form" id="${arr[i]._id}">
+								<input name="item" type="text" class="form-control" placeholder="Enter task">
+								<input id="btn" onclick="itemSend(this)" type="button" class="btn btn-secondary mt-2 mb-2" value="Save">
+							</form>`
 			ul.appendChild(li);
+			axios
+			.get(`/api/lists/${arr[i]._id}`)
+			.then(response => {
+				let form = document.getElementById(arr[i]._id);
+				for(let y = 0; y < arr[i].listObj.length; y++){
+					let div = document.createElement("DIV");
+					let itemText = document.createElement("P");
+					let itemClose = document.createElement("P");
+					itemText.innerHTML = arr[i].listObj[y].itemObj;
+					itemText.setAttribute("class", "updItem");
+					itemText.setAttribute("onclick", "updItem(this)");
+					itemClose.setAttribute("id", `${arr[i].listObj[y]._id}`);
+					itemClose.setAttribute("onclick", "itemDel(this)");
+					itemClose.setAttribute("name", "itemid");
+					itemClose.innerHTML = "&#10006;";
+					div.className = "d-flex mb-2";
+					div.appendChild(itemText);
+					div.appendChild(itemClose);
+					form.appendChild(div);
+				}
+			}).catch(error => {
+			  console.log(error);
+			});
 		}
 	})
 	.catch(error => {
@@ -48,16 +73,86 @@ let sendList = () => {
 let deleteList = (data) => {
 	event.preventDefault();
 	let id = (data.href).match(/\w{24}$/).join("");
-
+	console.log(data);
   axios
-    .delete(`/del/${id}`, {
-      _id: id
-    })
-    .then(response => {
-      window.location.replace('/list');
-      console.log(response.status);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+	.delete(`/del/${id}`, {
+	  _id: id
+	})
+	.then(response => {
+	  window.location.replace('/list');
+	  console.log(response.status);
+	})
+	.catch(error => {
+	  console.log(error);
+	});
 }
+
+
+let itemSend = (data) => {
+	let id = (data.parentNode).id;
+	let child = (data.previousElementSibling);
+	axios
+	.post(`/lists/${id}`, {
+		item: child.value
+	})
+	.then(response => {
+		let form = document.getElementById(id);
+		let div = document.createElement("DIV");
+		let itemText = document.createElement("P");
+		let itemClose = document.createElement("P");
+		itemText.innerHTML = child.value;
+		itemClose.setAttribute("onclick", "itemDel(this)");
+		itemClose.setAttribute("name", "itemid");
+		itemClose.innerHTML = "&#10006;";
+		div.className = "d-flex mb-2";
+		div.appendChild(itemText);
+		div.appendChild(itemClose);
+		form.appendChild(div);
+	})
+	.catch(error => {
+	  console.log(error);
+	});
+}
+
+let itemDel = (data) => {
+	let parent = ((data.parentNode).parentNode).id;
+	let itemid = (data).id;
+	console.log(itemid);
+	axios
+	.put(`/delete/${parent}`, {
+		_id: parent,
+		itemid: itemid
+	})
+	.catch(error => {
+	  console.log(error);
+	})
+	.then(response => {
+		console.log(response.status);
+	});
+}
+
+//let updItem = (data) => {
+//	let elem = document.querySelector(".updItem");
+//	let parent = data.parentNode;
+//	let text = elem.innerHTML;
+//	let input = document.createElement("INPUT");
+//	let button = document.createElement("INPUT");
+//	button.setAttribute("onclick", "updSend(this)");
+//	button.setAttribute("type", "button");
+//	button.innerHTML = "Update Info";
+//	button.setAttribute("class", "btnSave");
+//	input.setAttribute("value", text);
+//	parent.replaceChild(input, elem);
+//	parent.append(button);
+//}
+//
+//let updSend = (data) => {
+//	let input = (data.previousSibling).previousSibling;
+//	let parent = data.parentNode;
+//	let btnSave = document.querySelector(".btnSave");
+//	let elem = document.createElement("P");
+//	elem.setAttribute("class", "updItem");
+//	elem.setAttribute("onclick", "updItem(this)");
+//	elem.innerHTML = input.getAttribute("value");
+//	parent.replaceChild(elem, input);
+//}

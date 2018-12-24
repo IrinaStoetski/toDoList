@@ -18,7 +18,6 @@ module.exports = (app, db) => {
 			title: result.title,
 			description: result.description,
 		};
-		console.log(res);
 		res.render('updList', {id: showData.id, title: showData.title, description: showData.description});
 	});
 
