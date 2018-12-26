@@ -6,7 +6,30 @@ head
 		link(rel="stylesheet" href="/list.css")
 body
 	div.container
-		ul#list.list-group.mt-3
+		div.btn-block
+			button#btnAdd.btn-addlist
+				i.fas.fa-plus.mr-4.btn-icon
+				span.btn-addlist-text= 'Add list'
+		form#modalAdd.modal-addlist(method='POST')
+			div.modal-content
+				span.modal-close= 'x'
+				label(for="nameItem") Название задачи
+				input#title(type='text' name='title' placeholder='Enter' required)
+				label(for="nameDescription") Краткое описание задачи
+				input#description(type='text' name='description' placeholder='Enter' required)
+				button#btn(type='submit') Добавить задачу
+		div#list.mt-3.tiles
+			- for (var x = 0; x < items.length; x++)
+				div.tiles-items
+					h3.mb-1.font-weight-bold.text-truncate= items[x].title
+					p.mb-1.text-truncate= items[x].description
+					div.btn-block-tiles
+						a.btn-update(href='/updget/'+items[x]._id)
+							i.fas.fa-pencil-alt
+						a.btn-delete(href='/del/'+items[x]._id onclick="deleteList(this)")= 'x'
+					form.form(id=items[x]._id name="form")
+						input.form-control(name="item" type="text" placeholder="Enter task")
+						input.btn.btn-secondary.mt-2.mb-2#btn(onclick="itemSend(this)" type="button" value="Save")
 
 		script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
 		script(src="https://unpkg.com/axios/dist/axios.min.js")

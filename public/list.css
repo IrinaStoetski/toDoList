@@ -1,0 +1,120 @@
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.btn-block {
+	padding-top: 25px;
+	display: flex;
+	justify-content: center;
+}
+
+.btn-addlist {
+	padding: 25px;
+	background-color: rgba(96, 96, 239, 0.69);
+	outline: none !important;					/* Что-то перебивает обычный*/
+	border: none;
+	border-radius: 10px;
+	font-weight: 700;
+}
+
+.btn-addlist:active {
+	background-color: rgba(76, 76, 185, 0.76);
+}
+
+.btn-block-tiles {
+	position: absolute;
+	right: 20px;
+	top: 5px;
+}
+
+.btn-update {
+	margin-right: 4px;
+	font-size: 15px;
+	color: black;
+	text-decoration: none;
+}
+
+.btn-delete {
+	font-size: 25px;
+	color: black;
+	text-decoration: none;
+}
+
+.btn-update:hover {
+	color: rgba(76, 76, 185, 0.76);
+	text-decoration: none;
+	transition: All 0.5s;
+}
+
+.btn-delete:hover {
+	color: rgba(76, 76, 185, 0.76);
+	text-decoration: none;
+	transition: All 0.5s;
+}
+
+.btn-icon {
+	color: white;
+}
+
+.btn-addlist-text {
+	font-family: 'Roboto', sans-serif;
+	font-size: 24px;
+	color: white;
+}
+
+.tiles {
+	display: flex;
+	justify-content: flex-start;
+	flex-flow: wrap;
+}
+
+.tiles-items {
+	position: relative;
+	margin-right: 50px;
+	flex: 0 1 30%;
+	background-color: rgba(96, 96, 239, 0.69);
+	border: 1px solid black;
+	border-radius: 20px;
+	padding: 25px;
+	margin-bottom: 50px;
+}
+
+.tiles-items:nth-child(3n) {
+	margin-right: 0px;
+}
+
+/*Modal window*/
+
+.modal-addlist {
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	left: 0;
+	top: -100%;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 50%;
+}
+
+.modal-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

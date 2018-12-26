@@ -1,7 +1,7 @@
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = (app, db) =>{
-    app.delete('/del/:id', async (req, res) => {
+    app.delete('/del/lists/:id', async (req, res) => {
         const query = {_id: ObjectId(req.params.id)};
         let result = null;
         try {
@@ -9,6 +9,6 @@ module.exports = (app, db) =>{
         } catch (err) {
             console.log(err);
         }
-        res.render("list");
+        res.send(res.status);
     });
 };
