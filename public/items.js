@@ -7,7 +7,7 @@ for(let key of btnchek) {
 	key.addEventListener('click', function(event){
 		let parent = ((((key.parentNode).parentNode).parentNode).parentNode).id;
 		let item = key.id;
-		let flag;
+		let flag;						//тернарка
 		if(key.checked){
 			flag = true;
 		} else {
@@ -164,6 +164,7 @@ let itemSend = (data) => {
 		item: child.value
 	})
 	.then(response => {
+		console.log(response);
 		let highElem = document.querySelector(".list-group");
 		let div = document.createElement("DIV");
 		div.className = "d-flex justify-content-between item-lists custom-control custom-checkbox list-group-item list-group-item-primary";
